@@ -97,3 +97,109 @@
         .menu-icon {
             cursor: pointer;
         }
+
+        /* User Account Section */
+        .user-account-section {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            width: calc(100% - 40px);
+        }
+
+        .user-signed-in {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-profile-container {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .user-profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        #userProfileIcon {
+            font-size: 30px;
+            color: #1a1a1a;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .user-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .user-name {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .logout-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .logout-btn:hover {
+            background-color: #555;
+        }
+
+        .user-signed-out {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .user-signed-out i {
+            font-size: 48px;
+            color: #888;
+        }
+
+        .login-btn {
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .login-btn:hover {
+            background-color: #555;
+        }

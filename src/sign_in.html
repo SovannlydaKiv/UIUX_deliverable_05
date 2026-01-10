@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melo - Sign in</title>
+    <title>Melo - Login Page</title>
     <script src="https://kit.fontawesome.com/1e41634bbd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/sign_in.css">
+    <link rel="stylesheet" href="/css/login.css"> 
 </head>
+
 <body>
-    <div class="signin-container">
-        <img class="logo logo-light" src="/image/melo_light.png" alt="logo"> 
-        <img class="logo logo-dark" src="/image/melo_dark.png" alt="logo"> 
-        
-        <form class="signin-form" action="homepage_all.html" method="GET">
-            <h2>Welcome back!</h2>
+    <div style="display: flex; justify-content: center;">
+        <img src="/image/melo_light.png" alt="logo" width="200" style="margin-top: 180px; margin-bottom: 50px;"> 
+    </div>
+
+    <div class="login-container">
+        <form class="login-form" action="homepage_all.html" method="GET">
+            <h2>Create an account</h2>
+            <br>
+            <div class="input-group">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Email address" required>
+            </div> 
             
             <div class="input-group">
                 <label for="username"></label>
@@ -24,11 +31,29 @@
                 <label for="password"></label>
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>
-            
-            <button type="submit">Sign in</button>
-        </form>
-        
-        <p>New to Melo? <a target="_self" href="login.html">Register</a></p>
+
+            <div class="input-group">
+                <label for="confirm"></label>
+                <input type="password" id="confirm" name="confirm" placeholder="Confirm password" required>
+            </div>
+
+            <button type="submit">Register</button>
+        </form> 
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <p>Sign up with:</p>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-google"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-apple"></i></a>
+        </div>
     </div>
+
+    <p>Already have an account? <a target="_self" href="login.html">Log in</a></p>
 </body>
+
 </html>

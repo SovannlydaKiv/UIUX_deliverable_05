@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/1e41634bbd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/homepage_all.css">
     <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="css/music_player.css">
    
 </head>
 <body>
@@ -153,8 +154,126 @@
                 <span>Library</span>
             </a>
         </nav>
+
+    <!-- Fixed Music Player Island -->
+    <div class="music-player-island" id="musicPlayerIsland" style="display: none;">
+        <div class="player-info">
+            <div class="song-title" id="playerSongTitle">Song Title</div>
+            <div class="song-time" id="playerSongTime">0:00 / 0:00</div>
+        </div>
+        <div class="progress-bar-container" id="progressBarContainer">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+    </div>
         
+    <!-- Hidden audio element -->
+    <audio id="audioPlayer"></audio>
+    
     <script src="/js/sidebar.js"></script>
     <script src="/js/filter.js"></script>
+    <script>
+        console.log('Audio player script started');
+        
+        const cardSongs = {
+            'Tyler, The creator': 'See You Again.mp3',
+            'TV Girl': 'Lovers Rock.mp3',
+            'Clairo': 'Flamin Hot Cheetos.mp3',
+            'Calling U Back': 'calling you back.mp3',
+            'Not Cute Anymore': 'Not cute anymore.mp3',
+            'Emails I can\'t send': 'emails i cant send.mp3',
+            'Brighter days ahead': 'eternal sunshine.mp3',
+            'This is how tomorrow moves': 'Take A Bite.mp3',
+            'No doubt - Enhypen': 'No Doubt.mp3',
+            'UP NO MORE - Twice': 'UP NO MORE.mp3',
+            'Hurt - NewJeans': 'Hurt.mp3',
+            'wannabewithu - Lover is a day': 'Lover Is a Day.mp3',
+            'Ballads - Joji': 'Slow Dancing In The Dark.mp3',
+            'Submarine - The Marías': 'Sienna.mp3',
+            'Son of spergy - Daniel Caesar': 'Who Knows.mp3',
+            'Lover Girl - Laufey': 'Lover Girl.mp3',
+            'Ripples - Beabodoobee': 'Ripples.mp3',
+            'About you - The 1975': 'About You.mp3',
+        };
+        
+        let currentCard = null;
+        const audioPlayer = document.getElementById('audioPlayer');
+        const musicPlayerIsland = document.getElementById('musicPlayerIsland');
+        const playerSongTitle = document.getElementById('playerSongTitle');
+        const playerSongTime = document.getElementById('playerSongTime');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+
+        // Format time helper
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // Update player display
+        audioPlayer.addEventListener('timeupdate', function() {
+            if (audioPlayer.duration) {
+                const current = formatTime(audioPlayer.currentTime);
+                const duration = formatTime(audioPlayer.duration);
+                playerSongTime.textContent = current + ' / ' + duration;
+                
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBarFill.style.width = percent + '%';
+            }
+        });
+        
+        // Seek functionality
+        progressBarContainer.addEventListener('click', function(e) {
+            if (audioPlayer.duration) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            }
+        });
+        
+        function setupAudioPlayer() {
+            console.log('Setting up audio player');
+            const cards = document.querySelectorAll('.music-card');
+            console.log('Found ' + cards.length + ' music cards');
+            
+            cards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function() {
+                    const titleElement = this.querySelector('p');
+                    if (!titleElement) return;
+                    
+                    const cardText = titleElement.textContent.trim();
+                    const songFile = cardSongs[cardText];
+                    
+                    console.log('Clicked: ' + cardText + ', Song: ' + songFile);
+                    
+                    if (songFile) {
+                        if (currentCard) {
+                            currentCard.classList.remove('now-playing');
+                        }
+                        
+                        this.classList.add('now-playing');
+                        currentCard = this;
+                        
+                        // Show player island
+                        musicPlayerIsland.style.display = 'block';
+                        playerSongTitle.textContent = cardText;
+                        playerSongTime.textContent = '0:00 / 0:00';
+                        progressBarFill.style.width = '0%';
+                        
+                        audioPlayer.src = '/music_sample/' + songFile;
+                        audioPlayer.play();
+                    }
+                });
+            });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupAudioPlayer);
+        } else {
+            setupAudioPlayer();
+        }
+    </script>
 </body>
 </html>

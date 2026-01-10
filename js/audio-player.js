@@ -51,41 +51,73 @@ const cardSongs = {
   'Hurt - NewJeans': 'Hurt.mp3'
 };
 
-// Initialize player when DOM is ready
+// Initialize player
 function initializeAudioPlayer() {
+  console.log('Initializing audio player...');
+  
   audioPlayer = document.getElementById('audioPlayer');
+  console.log('Audio player element:', audioPlayer);
   
   if (!audioPlayer) {
-    console.error('Audio player element not found!');
+    console.error('Audio player element not found! Make sure <audio id="audioPlayer"></audio> exists in HTML');
     return;
   }
   
+  // Set controls attribute so we can see it
+  audioPlayer.controls = true;
+  audioPlayer.style.width = '100%';
+  audioPlayer.style.marginTop = '20px';
+  audioPlayer.style.marginBottom = '20px';
+  
+  const cards = document.querySelectorAll('.music-card');
+  console.log('Found', cards.length, 'music cards');
+  
   // Handle music card clicks
-  document.querySelectorAll('.music-card').forEach(card => {
-    card.addEventListener('click', function() {
+  cards.forEach((card, index) => {
+    card.addEventListener('click', function(e) {
+      e.stopPropagation();
+      console.log('=== CARD CLICKED ===');
+      
       const titleElement = this.querySelector('p');
-      if (!titleElement) return;
+      if (!titleElement) {
+        console.warn('No title element found in card');
+        return;
+      }
       
       const cardText = titleElement.textContent.trim();
       const songFile = cardSongs[cardText];
       
-      console.log('Clicked card:', cardText, 'Playing:', songFile);
+      console.log('Card text:', cardText);
+      console.log('Song file:', songFile);
       
       if (songFile) {
         // Remove playing state from previous card
         if (currentCard) {
           currentCard.classList.remove('now-playing');
+          console.log('Removed now-playing from previous card');
         }
         
         // Add playing state to current card
         this.classList.add('now-playing');
         currentCard = this;
+        console.log('Added now-playing to current card');
         
         // Play the song
-        audioPlayer.src = '/music_sample/' + songFile;
-        audioPlayer.play().catch(err => console.error('Playback error:', err));
+        const url = '/music_sample/' + songFile;
+        console.log('Playing URL:', url);
+        audioPlayer.src = url;
+        
+        const playPromise = audioPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log('Playback started successfully');
+          }).catch(err => {
+            console.error('Playback error:', err);
+          });
+        }
       } else {
-        console.warn('No song mapping found for:', cardText);
+        console.warn('No song found for:', cardText);
+        console.log('Available songs:', Object.keys(cardSongs));
       }
     });
     
@@ -95,16 +127,20 @@ function initializeAudioPlayer() {
   
   // Update card when song ends to remove highlight
   audioPlayer.addEventListener('ended', function() {
+    console.log('Song ended');
     if (currentCard) {
       currentCard.classList.remove('now-playing');
       currentCard = null;
     }
   });
+  
+  console.log('Audio player initialized successfully');
 }
 
 // Wait for DOM to be fully loaded
+console.log('Audio player script loaded, document state:', document.readyState);
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeAudioPlayer);
 } else {
-  initializeAudioPlayer();
+  setTimeout(initializeAudioPlayer, 100);
 }

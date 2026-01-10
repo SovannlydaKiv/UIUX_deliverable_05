@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/homepage_all.css">
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/music_player.css">
 </head>
 <body>
   <div class="header">
@@ -56,6 +57,12 @@
     </div>
 
     <div class="content">
+        <!-- Search Results Section -->
+        <div class="search-results-section" id="searchResultsSection" style="display: none;">
+            <h2>Search Results</h2>
+            <div id="searchResultsList"></div>
+        </div>
+
         <div class="search-history-section" id="searchHistorySection">
             <div class="empty-state" id="emptyState">
                 <i class="fas fa-search"></i>
@@ -73,7 +80,7 @@
         </div>
     </div>
 
-    <nav class="bottom-nav" style="display: none;">
+    <nav class="bottom-nav">
         <a href="index.html" class="nav-item">
             <i class="fas fa-home"></i>
             <span>Home</span>
@@ -82,20 +89,223 @@
             <i class="fas fa-search"></i>
             <span>Search</span>
         </a>
-<a href="library.html" class="nav-item">
+        <a href="library.html" class="nav-item">
             <i class="fa-solid fa-swatchbook"></i>
             <span>Library</span>
         </a>
     </nav>
 
+    <!-- Fixed Music Player Island -->
+    <div class="music-player-island" id="musicPlayerIsland" style="display: none;">
+        <div class="song-title" id="playerSongTitle">Song Title</div>
+        <div class="progress-section">
+            <span class="current-time" id="currentTime">0:00</span>
+            <div class="progress-bar-container" id="progressBarContainer">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <span class="total-time" id="totalTime">0:00</span>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn play-pause-btn" id="playPauseBtn">
+                <i class="fas fa-pause"></i>
+            </button>
+            <div class="volume-control">
+                <i class="fas fa-volume-up" id="volumeIcon"></i>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden audio element -->
+    <audio id="audioPlayer"></audio>
+
     <script src="js/sidebar.js"></script>
     <script>
+        // Available songs from music_sample folder
+        const availableSongs = [
+            { title: '505', file: '505.mp3' },
+            { title: 'About You', file: 'About You.mp3' },
+            { title: 'Calling You Back', file: 'calling you back.mp3' },
+            { title: 'Cry', file: 'Cry.mp3' },
+            { title: 'Emails I Can\'t Send', file: 'emails i cant send.mp3' },
+            { title: 'Eternal Sunshine', file: 'eternal sunshine.mp3' },
+            { title: 'Flamin Hot Cheetos', file: 'Flamin Hot Cheetos.mp3' },
+            { title: 'Hurt', file: 'Hurt.mp3' },
+            { title: 'Lover Girl', file: 'Lover Girl.mp3' },
+            { title: 'Lover Is a Day', file: 'Lover Is a Day.mp3' },
+            { title: 'Lovers Rock', file: 'Lovers Rock.mp3' },
+            { title: 'MIA', file: 'MIA.mp3' },
+            { title: 'No Doubt', file: 'No Doubt.mp3' },
+            { title: 'Not Cute Anymore', file: 'Not cute anymore.mp3' },
+            { title: 'Ripples', file: 'Ripples.mp3' },
+            { title: 'See You Again', file: 'See You Again.mp3' },
+            { title: 'Sienna', file: 'Sienna.mp3' },
+            { title: 'Slow Dancing In The Dark', file: 'Slow Dancing In The Dark.mp3' },
+            { title: 'Take A Bite', file: 'Take A Bite.mp3' },
+            { title: 'UP NO MORE', file: 'UP NO MORE.mp3' },
+            { title: 'Who Knows', file: 'Who Knows.mp3' }
+        ];
+
         const searchInput = document.getElementById('searchInput');
         const clearSearch = document.getElementById('clearSearch');
         const emptyState = document.getElementById('emptyState');
         const historyContent = document.getElementById('historyContent');
         const historyList = document.getElementById('historyList');
         const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        const searchHistorySection = document.getElementById('searchHistorySection');
+        const searchResultsSection = document.getElementById('searchResultsSection');
+        const searchResultsList = document.getElementById('searchResultsList');
+
+        // Audio player elements
+        const audioPlayer = document.getElementById('audioPlayer');
+        const musicPlayerIsland = document.getElementById('musicPlayerIsland');
+        const playerSongTitle = document.getElementById('playerSongTitle');
+        const currentTime = document.getElementById('currentTime');
+        const totalTime = document.getElementById('totalTime');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        let isPlaying = false;
+        audioPlayer.volume = 0.7;
+
+        // Format time helper
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // Update play/pause button
+        function updatePlayPauseBtn() {
+            playPauseBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+        }
+
+        // Play/pause control
+        playPauseBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audioPlayer.pause();
+            } else {
+                audioPlayer.play();
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = this.value / 100;
+            if (this.value == 0) {
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else if (this.value < 50) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+        });
+
+        volumeIcon.addEventListener('click', function() {
+            if (audioPlayer.volume > 0) {
+                audioPlayer.volume = 0;
+                volumeSlider.value = 0;
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else {
+                audioPlayer.volume = 0.7;
+                volumeSlider.value = 70;
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+        });
+
+        audioPlayer.addEventListener('timeupdate', function() {
+            if (audioPlayer.duration) {
+                currentTime.textContent = formatTime(audioPlayer.currentTime);
+                totalTime.textContent = formatTime(audioPlayer.duration);
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBarFill.style.width = percent + '%';
+            }
+        });
+
+        audioPlayer.addEventListener('play', function() {
+            isPlaying = true;
+            updatePlayPauseBtn();
+        });
+
+        audioPlayer.addEventListener('pause', function() {
+            isPlaying = false;
+            updatePlayPauseBtn();
+        });
+
+        audioPlayer.addEventListener('ended', function() {
+            isPlaying = false;
+            updatePlayPauseBtn();
+            progressBarFill.style.width = '0%';
+        });
+
+        progressBarContainer.addEventListener('click', function(e) {
+            if (audioPlayer.duration) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            }
+        });
+
+        // Play song function
+        function playSong(title, file) {
+            musicPlayerIsland.style.display = 'block';
+            document.body.classList.add('player-active');
+            playerSongTitle.textContent = title;
+            currentTime.textContent = '0:00';
+            totalTime.textContent = '0:00';
+            progressBarFill.style.width = '0%';
+            audioPlayer.src = '/music_sample/' + file;
+            audioPlayer.play();
+        }
+
+        // Search songs function
+        function searchSongs(query) {
+            const lowerQuery = query.toLowerCase();
+            return availableSongs.filter(song => 
+                song.title.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        // Display search results
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResultsList.innerHTML = `
+                    <div class="no-results">
+                        <p>No songs found for "${query}"</p>
+                    </div>
+                `;
+            } else {
+                searchResultsList.innerHTML = results.map(song => `
+                    <div class="search-result-item" data-title="${song.title}" data-file="${song.file}">
+                        <i class="fas fa-music"></i>
+                        <div class="result-info">
+                            <p class="result-title">${song.title}</p>
+                        </div>
+                        <i class="fas fa-play play-icon"></i>
+                    </div>
+                `).join('');
+
+                // Add click listeners to results
+                document.querySelectorAll('.search-result-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const title = this.dataset.title;
+                        const file = this.dataset.file;
+                        // Add current search to history when clicking a result
+                        const currentQuery = searchInput.value.trim();
+                        if (currentQuery) {
+                            addToHistory(currentQuery);
+                        }
+                        playSong(title, file);
+                    });
+                });
+            }
+            searchResultsSection.style.display = 'block';
+            searchHistorySection.style.display = 'none';
+        }
 
         // Load search history
         let searchHistory = [];
@@ -113,17 +323,11 @@
         }
 
         function addToHistory(searchTerm) {
-            // Remove if already exists
             searchHistory = searchHistory.filter(item => item !== searchTerm);
-            
-            // Add to beginning
             searchHistory.unshift(searchTerm);
-            
-            // Keep only last 10
             if (searchHistory.length > 10) {
                 searchHistory = searchHistory.slice(0, 10);
             }
-            
             saveHistory();
             displayHistory();
         }
@@ -137,19 +341,36 @@
                 historyContent.style.display = 'block';
                 
                 historyList.innerHTML = searchHistory.map(term => `
-                    <div class="history-item">
+                    <div class="history-item" data-term="${term}">
                         <div class="history-info">
                             <p class="history-subtitle">${term}</p>
                         </div>
                     </div>
                 `).join('');
+
+                // Add click listeners to history items
+                document.querySelectorAll('.history-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const term = this.dataset.term;
+                        searchInput.value = term;
+                        performSearch();
+                    });
+                });
             }
         }
 
-        // Search functionality
+        // Search functionality - live search as user types
         searchInput.addEventListener('input', (e) => {
             const value = e.target.value.trim();
             clearSearch.style.display = value ? 'block' : 'none';
+            
+            if (value.length > 0) {
+                const results = searchSongs(value);
+                displaySearchResults(results, value);
+            } else {
+                searchResultsSection.style.display = 'none';
+                searchHistorySection.style.display = 'block';
+            }
         });
 
         searchInput.addEventListener('keypress', (e) => {
@@ -161,6 +382,8 @@
         clearSearch.addEventListener('click', () => {
             searchInput.value = '';
             clearSearch.style.display = 'none';
+            searchResultsSection.style.display = 'none';
+            searchHistorySection.style.display = 'block';
             searchInput.focus();
         });
 
@@ -169,8 +392,8 @@
             if (!query) return;
 
             addToHistory(query);
-            searchInput.value = '';
-            clearSearch.style.display = 'none';
+            const results = searchSongs(query);
+            displaySearchResults(results, query);
         }
 
         clearHistoryBtn.addEventListener('click', () => {

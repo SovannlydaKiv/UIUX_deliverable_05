@@ -135,7 +135,7 @@
         }
 
         .clear-history-btn {
-            margin: 1rem 0;
+            margin: 1rem 0 1rem 1.5rem;
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -148,6 +148,79 @@
 
         .clear-history-btn:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Search Results Styles */
+        .search-results-section {
+            margin-top: 1rem;
+        }
+
+        .search-results-section h2 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item:hover .play-icon {
+            opacity: 1;
+        }
+
+        .search-result-item > i.fa-music {
+            font-size: 20px;
+            color: #1db954;
+            width: 40px;
+            height: 40px;
+            background: rgba(29, 185, 84, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .result-title {
+            font-size: 1rem;
+            margin: 0;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .play-icon {
+            font-size: 18px;
+            color: #1db954;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #b3b3b3;
+        }
+
+        .no-results p {
+            font-size: 1rem;
         }
 
         /* Adjust padding for bottom navigation */
@@ -227,8 +300,8 @@
             }
 
             .clear-search {
+                margin-left: 100px;
                 font-size: 14px;
-                right: 10px;
             }
 
             .empty-state {

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melo - Home</title>
+    <script src="https://kit.fontawesome.com/1e41634bbd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/homepage_all.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+   
+</head>
+<body>
+        <div class="header">
+            <div class="menu-icon" id="menuIcon"> ☰ </div>
+            <img src="/image/melo_dark.png" alt="logo"> 
+            <div class="profile-icon"><i class="fas fa-user-circle"></i></div>
+        </div>
+
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+                <button class="close-btn" id="closeBtn">✕</button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="homepage_all.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="music_tab.html"><i class="fas fa-music"></i> Music</a></li>
+                <li><a href="podcast_tab.html"><i class="fas fa-podcast"></i> Podcasts</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Liked Songs</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="user-account-section" id="userAccountSection">
+                <div class="user-signed-in" id="userSignedIn" style="display: none;">
+                    <div class="user-profile-container">
+                        <i class="fas fa-user-circle" id="userProfileIcon"></i>
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name" id="userName"></p>
+                        <button class="logout-btn" id="logoutBtn">Log out</button>
+                    </div>
+                </div>
+                <div class="user-signed-out" id="userSignedOut">
+                    <i class="fas fa-user-circle"></i>
+                    <a href="login.html" class="login-btn">Log in</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="overlay" id="overlay"></div>
+        <div class="content">
+
+            <section class="section" data-category="Music">
+                <h2>Your playlists: </h2>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <img src="/image/Flower Boy - Tyler The Creator.jpg" alt="tyler the creator">
+                        <p>Tyler, The creator</p>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/Tv girl 🩷💙.jpg" alt="TV girl">
+                        <p>TV Girl</p>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/clairo.jpg" alt="Clairo">
+                        <p>Clairo</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" data-category="Podcasts">
+                <h2>Podcast you may enjoy: </h2>
+                <div class="single_poster-card">
+                    <img src="/image/Rotten Mango.jpg" alt="repeat">
+                    <div class="single_poster-info">
+                        <h3>True crime podcast</h3>
+                        <p>Rotten Mango</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" data-category="Music">
+                <h2>Listening activities</h2>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <img src="/image/themarias.jpg" alt="Calling U Back">
+                        <p>Calling U Back</p>
+                        <span>The Marías</span>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/illit.jpg" alt="illit">
+                        <p>Not Cute Anymore</p>
+                        <span>Illit</span>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/Sabrina Carpenter - emails i can't send.jpg" alt="SC">
+                        <p>Emails I can't send</p>
+                        <span>Sabrina Carpenter</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" data-category="Music">
+                <h2>New from artists</h2>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <img src="/image/brighter days ahead.jpg" alt="Ariana Grande">
+                        <p>Brighter days ahead</p>
+                        <span>Ariana Grande</span>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/this is how tmr moves.jpg" alt="Beabadoobee">
+                        <p>This is how tomorrow moves</p>
+                        <span>Beabadoobee</span>
+                    </div>
+                </div>
+            </section>
+
+             <section class="section" data-category="Music">
+                <h2>Past favorites</h2>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <img src="/image/enhypen.jpg" alt="enhypen">
+                        <p>No doubt - Enhypen</p>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/twice.jpg" alt="twice">
+                        <p>UP NO MORE - Twice</p>
+                    </div>
+                    <div class="music-card">
+                        <img src="/image/newjeans.jpg" alt="nwj">
+                        <p>Hurt - NewJeans</p>
+                    </div>
+                </div>
+            </section>
+        </div>        
+
+        <nav class="bottom-nav">
+            <a href="homepage_all.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="search.html" class="nav-item" id="searchNavBtn">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-swatchbook"></i>
+                <span>Library</span>
+            </a>
+        </nav>
+        
+    <!-- Hidden audio player -->
+    <audio id="audioPlayer"></audio>
+    
+    <script src="/js/sidebar.js"></script>
+    <script src="/js/filter.js"></script>
+    <script src="/js/audio-player.js"></script>
+</body>
+</html>

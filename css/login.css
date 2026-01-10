@@ -1,0 +1,181 @@
+body {
+  background-color: white; 
+  min-height: 100vh;
+  margin: 0;
+  padding: 0; 
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  position: relative;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: block;
+  max-width: 180px;
+  height: auto;
+}
+
+.login-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.sign-in-link {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  font-size: 14px;
+}
+
+.login-form h1 {
+  margin-top: 20px; 
+  margin-bottom: 12px;
+  font-size: 26px;
+}
+
+.input-group {
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.input-group input {
+  width: 360px; 
+  padding: 9px 15px; 
+  box-sizing: border-box; 
+  border-radius: 20px;
+  border: 2px solid #333;
+  font-size: 14px;
+}
+
+.login-container {
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 38px;
+  font-size: 15px;
+  background-color: #5b88b8;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #4a6f96;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 12px 0 8px 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+  padding: 0 12px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+p {
+  text-align: center;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+a {
+  color: #5b88b8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .input-group input {
+    background-color: #1a1a1a;
+    border-color: #555;
+    color: #ffffff;
+  }
+
+  .input-group input::placeholder {
+    color: #999;
+  }
+
+  button {
+    background-color: #4a6f96;
+  }
+
+  button:hover {
+    background-color: #5b88b8;
+  }
+
+  .divider::before,
+  .divider::after {
+    border-bottom-color: #555;
+  }
+
+  .sign-in-link a {
+    color: #87ceeb;
+  }
+
+  a {
+    color: #87ceeb;
+  }
+}
+
+/* Change logo for dark mode */
+@media (prefers-color-scheme: dark) {
+  img[src="/image/melo_light.png"] {
+    content: url("/image/melo_dark.png");
+  }
+}

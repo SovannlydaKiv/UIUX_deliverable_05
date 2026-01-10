@@ -6,6 +6,10 @@ body {
   font-family: Arial, sans-serif;
   overflow: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 * {
@@ -19,6 +23,26 @@ body {
   display: block;
   max-width: 180px;
   height: auto;
+}
+
+/* Light mode: show light logo, hide dark logo */
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+/* Dark mode: show dark logo, hide light logo */
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+  
+  .logo-dark {
+    display: block;
+  }
 }
 
 .login-form {
@@ -170,12 +194,5 @@ a:hover {
 
   a {
     color: #87ceeb;
-  }
-}
-
-/* Change logo for dark mode */
-@media (prefers-color-scheme: dark) {
-  img[src="/image/melo_light.png"] {
-    content: url("/image/melo_dark.png");
   }
 }

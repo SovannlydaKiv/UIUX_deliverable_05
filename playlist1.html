@@ -12,7 +12,7 @@
 <body>
     <div class="header">
         <div class="menu-icon" id="menuIcon">☰</div>
-        <img src="image/melo_dark.png" alt="logo"> 
+        <a href="index.html"><img src="image/melo_dark.png" alt="logo"></a> 
         <div class="profile-icon"><i class="fas fa-user-circle"></i></div>
     </div>
 
@@ -22,10 +22,10 @@
             <button class="close-btn" id="closeBtn">✕</button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="homepage_all.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="music_tab.html"><i class="fas fa-music"></i> Music</a></li>
             <li><a href="podcast_tab.html"><i class="fas fa-podcast"></i> Podcasts</a></li>
-            <li><a href="#"><i class="fas fa-heart"></i> Liked Songs</a></li>
+            <li><a href="likedSongs.html"><i class="fas fa-heart"></i> Liked Songs</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
         </ul>
         <div class="user-account-section" id="userAccountSection">
@@ -67,32 +67,32 @@
             <div class="track-row">
                 <div class="col-number">1</div>
                 <div class="col-title">
-                    <img src="image/Tv girl 🩷💙.jpg" alt="I Can't Handle Change">
+                    <img src="image/enhypen.jpg" alt="No doubt">
                     <div class="track-info">
-                        <p class="track-name">I Can't Handle Change</p>
-                        <p class="track-artist">Roar</p>
+                        <p class="track-name">No Doubt</p>
+                        <p class="track-artist">Enhypen</p>
                     </div>
                 </div>
-                <div class="col-album">I Can't Handle Change</div>
-                <div class="col-date">May 15, 2022</div>
+                <div class="col-album">Romance: Untold: Daydream</div>
+                <div class="col-date">May 15, 2025</div>
                 <div class="col-duration">
-                    <span class="duration">3:18</span>
+                    <span class="duration">2:45</span>
                 </div>
             </div>
 
             <div class="track-row">
                 <div class="col-number">2</div>
                 <div class="col-title">
-                    <img src="image/clairo.jpg" alt="YKWIM?">
+                    <img src="image/clairo.jpg" alt="Flamin Hot Cheetos">
                     <div class="track-info">
-                        <p class="track-name">YKWIM?</p>
-                        <p class="track-artist">Yot Club</p>
+                        <p class="track-name">Flamin Hot Cheetos</p>
+                        <p class="track-artist">Clairo</p>
                     </div>
                 </div>
-                <div class="col-album">Bipolar</div>
-                <div class="col-date">May 15, 2022</div>
+                <div class="col-album">Flamin Hot Cheetos</div>
+                <div class="col-date">Aug 10, 2025</div>
                 <div class="col-duration">
-                    <span class="duration">3:33</span>
+                    <span class="duration">2:03</span>
                 </div>
             </div>
 
@@ -115,16 +115,16 @@
             <div class="track-row">
                 <div class="col-number">4</div>
                 <div class="col-title">
-                    <img src="image/Sabrina Carpenter - emails i can't send.jpg" alt="everything i wanted">
+                    <img src="image/Flower Boy - Tyler The Creator.jpg" alt="See You Again">
                     <div class="track-info">
-                        <p class="track-name">everything i wanted</p>
-                        <p class="track-artist">Billie Eilish</p>
+                        <p class="track-name">See you again</p>
+                        <p class="track-artist">Tyler, The Creator</p>
                     </div>
                 </div>
-                <div class="col-album">everything i wanted</div>
-                <div class="col-date">May 16, 2022</div>
+                <div class="col-album">Flower Boy</div>
+                <div class="col-date">Feb 14, 2024</div>
                 <div class="col-duration">
-                    <span class="duration">4:05</span>
+                    <span class="duration">3:00</span>
                 </div>
             </div>
         </div>
@@ -157,10 +157,10 @@
     <script src="js/sidebar.js"></script>
     <script>
         const trackSongs = {
-            'I Can\'t Handle Change': 'I Can\'t Handle Change.mp3',
-            'YKWIM?': 'YKWIM.mp3',
+            'No Doubt': 'No Doubt.mp3',
+            'Flamin Hot Cheetos': 'Flamin Hot Cheetos.mp3',
             'Lover Is a Day': 'Lover Is a Day.mp3',
-            'everything i wanted': 'everything i wanted.mp3'
+            'See you again': 'See You Again.mp3'
         };
         
         let currentTrack = null;

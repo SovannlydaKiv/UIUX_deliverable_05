@@ -58,7 +58,7 @@ function displayLoginPrompt() {
 
 function logout() {
     // Redirect to homepage without params
-    window.location.href = 'homepage_all.html';
+    window.location.href = 'index.html';
 }
 
 // Preserve username in navigation links
@@ -95,7 +95,7 @@ function updateNavigationLinks() {
             const href = link.getAttribute('href');
             if (href === '#') {
                 // Keep them on the current page with username
-                const currentPage = window.location.pathname.split('/').pop() || 'homepage_all.html';
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
                 link.setAttribute('href', currentPage + '?username=' + encodeURIComponent(username));
             }
         });

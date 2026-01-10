@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melo - Playlist</title>
+    <title>Melo - Liked Songs</title>
     <script src="https://kit.fontawesome.com/1e41634bbd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/playlist.css">
+    <link rel="stylesheet" href="css/playlist-liked.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/music_player.css">
 </head>
 <body>
     <div class="header">
         <div class="menu-icon" id="menuIcon">☰</div>
-        <img src="image/melo_dark.png" alt="logo"> 
+        <a href="index.html"><img src="image/melo_dark.png" alt="logo"></a> 
         <div class="profile-icon"><i class="fas fa-user-circle"></i></div>
     </div>
 
@@ -21,10 +22,10 @@
             <button class="close-btn" id="closeBtn">✕</button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="homepage_all.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="music_tab.html"><i class="fas fa-music"></i> Music</a></li>
             <li><a href="podcast_tab.html"><i class="fas fa-podcast"></i> Podcasts</a></li>
-            <li><a href="#"><i class="fas fa-heart"></i> Liked Songs</a></li>
+            <li><a href="likedSongs.html"><i class="fas fa-heart"></i> Liked Songs</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
         </ul>
         <div class="user-account-section" id="userAccountSection">
@@ -48,7 +49,7 @@
     
     <div class="content">
         <div class="playlist-header">
-            <h1>Your Playlist</h1>
+            <h1>Liked Songs: </h1>
         </div>
 
         <div class="playlist-table-header">
@@ -66,32 +67,32 @@
             <div class="track-row">
                 <div class="col-number">1</div>
                 <div class="col-title">
-                    <img src="image/Tv girl 🩷💙.jpg" alt="I Can't Handle Change">
+                    <img src="image/enhypen.jpg" alt="No doubt">
                     <div class="track-info">
-                        <p class="track-name">I Can't Handle Change</p>
-                        <p class="track-artist">Roar</p>
+                        <p class="track-name">No Doubt</p>
+                        <p class="track-artist">Enhypen</p>
                     </div>
                 </div>
-                <div class="col-album">I Can't Handle Change</div>
-                <div class="col-date">May 15, 2022</div>
+                <div class="col-album">Romance: Untold: Daydream</div>
+                <div class="col-date">May 15, 2025</div>
                 <div class="col-duration">
-                    <span class="duration">3:18</span>
+                    <span class="duration">2:45</span>
                 </div>
             </div>
 
             <div class="track-row">
                 <div class="col-number">2</div>
                 <div class="col-title">
-                    <img src="image/clairo.jpg" alt="YKWIM?">
+                    <img src="image/clairo.jpg" alt="Flamin Hot Cheetos">
                     <div class="track-info">
-                        <p class="track-name">YKWIM?</p>
-                        <p class="track-artist">Yot Club</p>
+                        <p class="track-name">Flamin Hot Cheetos</p>
+                        <p class="track-artist">Clairo</p>
                     </div>
                 </div>
-                <div class="col-album">Bipolar</div>
-                <div class="col-date">May 15, 2022</div>
+                <div class="col-album">Flamin Hot Cheetos</div>
+                <div class="col-date">Aug 10, 2025</div>
                 <div class="col-duration">
-                    <span class="duration">3:33</span>
+                    <span class="duration">2:03</span>
                 </div>
             </div>
 
@@ -114,21 +115,342 @@
             <div class="track-row">
                 <div class="col-number">4</div>
                 <div class="col-title">
-                    <img src="image/Sabrina Carpenter - emails i can't send.jpg" alt="everything i wanted">
+                    <img src="image/Flower Boy - Tyler The Creator.jpg" alt="See You Again">
                     <div class="track-info">
-                        <p class="track-name">everything i wanted</p>
-                        <p class="track-artist">Billie Eilish</p>
+                        <p class="track-name">See you again</p>
+                        <p class="track-artist">Tyler, The Creator</p>
                     </div>
                 </div>
-                <div class="col-album">everything i wanted</div>
+                <div class="col-album">Flower Boy</div>
+                <div class="col-date">Feb 14, 2024</div>
+                <div class="col-duration">
+                    <span class="duration">3:00</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">5</div>
+                <div class="col-title">
+                    <img src="image/Cigarettes After Sex - Cigarettes After Sex.jpg" alt="Cry">
+                    <div class="track-info">
+                        <p class="track-name">Cry</p>
+                        <p class="track-artist">Cigarettes After Sex</p>
+                    </div>
+                </div>
+                <div class="col-album">Cigarettes After Sex</div>
+                <div class="col-date">Mar 15, 2024</div>
+                <div class="col-duration">
+                    <span class="duration">4:17</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">6</div>
+                <div class="col-title">
+                    <img src="image/newjeans.jpg" alt="Hurt">
+                    <div class="track-info">
+                        <p class="track-name">Hurt</p>
+                        <p class="track-artist">NewJeans</p>
+                    </div>
+                </div>
+                <div class="col-album">Attention</div>
+                <div class="col-date">Oct 20, 2024</div>
+                <div class="col-duration">
+                    <span class="duration">2:55</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">7</div>
+                <div class="col-title">
+                    <img src="image/beatopia.jpg" alt="Ripples">
+                    <div class="track-info">
+                        <p class="track-name">Ripples</p>
+                        <p class="track-artist">Beabadoobee</p>
+                    </div>
+                </div>
+                <div class="col-album">Beatopia</div>
+                <div class="col-date">Jan 13, 2025</div>
+                <div class="col-duration">
+                    <span class="duration">3:07</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">9</div>
+                <div class="col-title">
+                    <img src="image/Submarine - The Marias.jpg" alt="Sienna">
+                    <div class="track-info">
+                        <p class="track-name">Sienna</p>
+                        <p class="track-artist">The Marías</p>
+                    </div>
+                </div>
+                <div class="col-album">Submarine</div>
+                <div class="col-date">May 16, 2024</div>
+                <div class="col-duration">
+                    <span class="duration">3:44</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">10</div>
+                <div class="col-title">
+                    <img src="image/Son of Spergy - Daniel Caesar [VINYL].jpg" alt="Who Knows">
+                    <div class="track-info">
+                        <p class="track-name">Who Knows</p>
+                        <p class="track-artist">Daniel Caesar</p>
+                    </div>
+                </div>
+                <div class="col-album">Son of Spurgy</div>
+                <div class="col-date">Nov 15, 2025</div>
+                <div class="col-duration">
+                    <span class="duration">3:44</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">11</div>
+                <div class="col-title">
+                    <img src="image/KATSEYE.jpg" alt="MIA">
+                    <div class="track-info">
+                        <p class="track-name">MIA</p>
+                        <p class="track-artist">Katseye</p>
+                    </div>
+                </div>
+                <div class="col-album">Beautiful Chaos</div>
+                <div class="col-date">Dec 15, 2025</div>
+                <div class="col-duration">
+                    <span class="duration">2:08</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">12</div>
+                <div class="col-title">
+                    <img src="image/brighter days ahead.jpg" alt="Eternal sunshine">
+                    <div class="track-info">
+                        <p class="track-name">Eternal Sunshine</p>
+                        <p class="track-artist">Ariana Grande</p>
+                    </div>
+                </div>
+                <div class="col-album">Brighter Days Ahead</div>
+                <div class="col-date">May 15, 2025</div>
+                <div class="col-duration">
+                    <span class="duration">3:30</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">13</div>
+                <div class="col-title">
+                    <img src="image/wannabewithu- CUCO.jpg" alt="Lover Is a Day">
+                    <div class="track-info">
+                        <p class="track-name">Lover Is a Day</p>
+                        <p class="track-artist">Cuco</p>
+                    </div>
+                </div>
+                <div class="col-album">wannabewithu</div>
+                <div class="col-date">May 15, 2022</div>
+                <div class="col-duration">
+                    <span class="duration">7:36</span>
+                </div>
+            </div>
+
+            <div class="track-row">
+                <div class="col-number">14</div>
+                <div class="col-title">
+                    <img src="image/Joji Ballads.jpg" alt="Slow Dancing in the Dark">
+                    <div class="track-info">
+                        <p class="track-name">Slow Dancing in the Dark</p>
+                        <p class="track-artist">Joji</p>
+                    </div>
+                </div>
+                <div class="col-album">Ballads</div>
                 <div class="col-date">May 16, 2022</div>
                 <div class="col-duration">
-                    <span class="duration">4:05</span>
+                    <span class="duration">3:29</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="music-player-island" id="musicPlayerIsland" style="display: none; bottom: 0;">
+        <div class="song-title" id="playerSongTitle">Song Title</div>
+        <div class="progress-section">
+            <span class="current-time" id="currentTime">0:00</span>
+            <div class="progress-bar-container" id="progressBarContainer">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <span class="total-time" id="totalTime">0:00</span>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn play-pause-btn" id="playPauseBtn">
+                <i class="fas fa-pause"></i>
+            </button>
+            <div class="volume-control">
+                <i class="fas fa-volume-up" id="volumeIcon"></i>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+        </div>
+    </div>
+
     <script src="js/sidebar.js"></script>
+
+    <audio id="audioPlayer"></audio>
+
+    <script>
+        const trackSongs = {
+            'No Doubt': 'No Doubt.mp3',
+            'Flamin Hot Cheetos': 'Flamin Hot Cheetos.mp3',
+            'Lover Is a Day': 'Lover Is a Day.mp3',
+            'See you again': 'See You Again.mp3',
+            'Cry':'Cry.mp3',
+            'Hurt':'Hurt.mp3',
+            'Ripples':'Ripples.mp3',
+            'Sienna':'Sienna.mp3',
+            'Who Knows':'Who Knows.mp3',
+            'MIA': 'MIA.mp3',
+            'Eternal Sunshine': 'eternal sunshine.mp3',
+            'Lover Is a Day': 'Lover Is A Day.mp3',
+            'Slow Dancing in the Dark': 'Slow Dancing In The Dark.mp3'
+
+        };
+        
+        let currentTrack = null;
+        let isPlaying = false;
+        const audioPlayer = document.getElementById('audioPlayer');
+        const musicPlayerIsland = document.getElementById('musicPlayerIsland');
+        const playerSongTitle = document.getElementById('playerSongTitle');
+        const currentTime = document.getElementById('currentTime');
+        const totalTime = document.getElementById('totalTime');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        audioPlayer.volume = 0.7;
+
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function updatePlayPauseBtn() {
+            if (isPlaying) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        playPauseBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audioPlayer.pause();
+                isPlaying = false;
+            } else {
+                audioPlayer.play();
+                isPlaying = true;
+            }
+            updatePlayPauseBtn();
+        });
+
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = this.value / 100;
+            if (this.value == 0) {
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else if (this.value < 50) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+        });
+
+        volumeIcon.addEventListener('click', function() {
+            if (audioPlayer.volume > 0) {
+                audioPlayer.volume = 0;
+                volumeSlider.value = 0;
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else {
+                audioPlayer.volume = 0.7;
+                volumeSlider.value = 70;
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+        });
+
+        audioPlayer.addEventListener('timeupdate', function() {
+            if (audioPlayer.duration) {
+                currentTime.textContent = formatTime(audioPlayer.currentTime);
+                totalTime.textContent = formatTime(audioPlayer.duration);
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBarFill.style.width = percent + '%';
+            }
+        });
+
+        audioPlayer.addEventListener('play', function() {
+            isPlaying = true;
+            updatePlayPauseBtn();
+        });
+
+        audioPlayer.addEventListener('pause', function() {
+            isPlaying = false;
+            updatePlayPauseBtn();
+        });
+
+        audioPlayer.addEventListener('ended', function() {
+            isPlaying = false;
+            updatePlayPauseBtn();
+            progressBarFill.style.width = '0%';
+        });
+        
+        progressBarContainer.addEventListener('click', function(e) {
+            if (audioPlayer.duration) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            }
+        });
+        
+        function setupPlaylistPlayer() {
+            const trackRows = document.querySelectorAll('.track-row');
+            
+            trackRows.forEach(row => {
+                row.style.cursor = 'pointer';
+                row.addEventListener('click', function() {
+                    const trackNameElement = this.querySelector('.track-name');
+                    if (!trackNameElement) return;
+                    
+                    const trackName = trackNameElement.textContent.trim();
+                    const songFile = trackSongs[trackName];
+                    
+                    if (songFile) {
+                        if (currentTrack) {
+                            currentTrack.classList.remove('now-playing');
+                        }
+                        
+                        this.classList.add('now-playing');
+                        currentTrack = this;
+                        
+                        musicPlayerIsland.style.display = 'block';
+                        playerSongTitle.textContent = trackName;
+                        currentTime.textContent = '0:00';
+                        totalTime.textContent = '0:00';
+                        progressBarFill.style.width = '0%';
+                        
+                        audioPlayer.src = '/music_sample/' + songFile;
+                        audioPlayer.play();
+                    }
+                });
+            });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupPlaylistPlayer);
+        } else {
+            setupPlaylistPlayer();
+        }
+    </script>
 </body>
 </html>

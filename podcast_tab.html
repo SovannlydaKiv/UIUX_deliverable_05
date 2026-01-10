@@ -164,24 +164,15 @@
         console.log('Audio player script started');
         
         const cardSongs = {
-            'Tyler, The creator': 'See You Again.mp3',
-            'TV Girl': 'Lovers Rock.mp3',
-            'Clairo': 'Flamin Hot Cheetos.mp3',
-            'Calling U Back': 'calling you back.mp3',
-            'Not Cute Anymore': 'Not cute anymore.mp3',
-            'Emails I can\'t send': 'emails i cant send.mp3',
-            'Brighter days ahead': 'eternal sunshine.mp3',
-            'This is how tomorrow moves': 'Take A Bite.mp3',
-            'No doubt - Enhypen': 'No Doubt.mp3',
-            'UP NO MORE - Twice': 'UP NO MORE.mp3',
-            'Hurt - NewJeans': 'Hurt.mp3',
-            'wannabewithu - Lover is a day': 'Lover Is a Day.mp3',
-            'Ballads - Joji': 'Slow Dancing In The Dark.mp3',
-            'Submarine - The Marías': 'Sienna.mp3',
-            'Son of spergy - Daniel Caesar': 'Who Knows.mp3',
-            'Lover Girl - Laufey': 'Lover Girl.mp3',
-            'Ripples - Beabodoobee': 'Ripples.mp3',
-            'About you - The 1975': 'About You.mp3',
+            'Scrubs & Soy Sauce': 'The CRAZY story of how we met DMs friend zones  Mattresses _ Scrubs  Soy Sauce Ep 1.mp3',
+            'Closet confessions': 'Candice Brathwaite on Black love _types_ and dating outside of her race _ Say It With Your Chest.mp3',
+            'Trying not to care': 'FOR THE THOUGHT DAUGHTERS_ how to stop caring what people think comparison and setting boundaries.mp3',
+            'True crime podcast': 'Sister Finds Out 18-Yr-Old Brother Has First Time W_ Moms Corpse  Did Unthinkable W_ Her Brain.mp3',
+            'Tais-toi': 'Podcast _ Les trucs pour lesquels jai arrt de mexcuser.mp3',
+            'Crying in public': 'Bonus Episode_ Just Another Re-Introduction_.mp3',
+            'Pop Apologists': 'Olive Oil  BloodBest of Pop Apologists.mp3',
+            'Brighter days ahead': 'Health is Wealth_ Thursday October 23rd 2025.mp3',
+            'Pretty basic': 'Our Honest Review On Taylor Swifts Life Of A Showgirl  PRETTY BASIC  EP 336.mp3'
         };
         
         let currentCard = null;
@@ -282,11 +273,16 @@
         });
         
         function setupAudioPlayer() {
-            const cards = document.querySelectorAll('.music-card');
+            const cards = document.querySelectorAll('.music-card, .single_poster-card');
             cards.forEach(card => {
                 card.style.cursor = 'pointer';
                 card.addEventListener('click', function() {
-                    const titleElement = this.querySelector('p');
+                    let titleElement;
+                    if (this.classList.contains('single_poster-card')) {
+                        titleElement = this.querySelector('.single_poster-info h3') || this.querySelector('h3');
+                    } else {
+                        titleElement = this.querySelector('p');
+                    }
                     if (!titleElement) return;
                     
                     const cardText = titleElement.textContent.trim();
@@ -300,12 +296,13 @@
                         currentCard = this;
                         
                         musicPlayerIsland.style.display = 'block';
+                        document.body.classList.add('player-active');
                         playerSongTitle.textContent = cardText;
                         currentTime.textContent = '0:00';
                         totalTime.textContent = '0:00';
                         progressBarFill.style.width = '0%';
                         
-                        audioPlayer.src = '/music_sample/' + songFile;
+                        audioPlayer.src = '/podcast_sample/' + songFile;
                         audioPlayer.play();
                     }
                 });

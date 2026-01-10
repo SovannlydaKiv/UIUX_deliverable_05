@@ -45,6 +45,16 @@
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Add padding to body when player is visible to prevent content from being hidden */
+body {
+    padding-bottom: 70px;
+    transition: padding-bottom 0.3s ease;
+}
+
+body.player-active {
+    padding-bottom: 220px;
+}
+
 .song-title {
     font-size: 0.95rem;
     font-weight: 600;

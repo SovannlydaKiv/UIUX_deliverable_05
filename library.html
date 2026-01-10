@@ -50,20 +50,20 @@
         <div class="content">
 
             <section class="section" data-category="Music">
-                <h2>Happy Happy: </h2>
+                <h2>Your playlists: </h2>
                 <div class="music-grid">
-                    <div class="music-card">
-                        <img src="image/Flower Boy - Tyler The Creator.jpg" alt="tyler the creator">
-                        <p>Tyler, The creator</p>
-                    </div>
-                    <div class="music-card">
-                        <img src="image/Tv girl 🩷💙.jpg" alt="TV girl">
-                        <p>TV Girl</p>
-                    </div>
-                    <div class="music-card">
-                        <img src="image/clairo.jpg" alt="Clairo">
-                        <p>Clairo</p>
-                    </div>
+                    <a href="playlist1.html" class="music-card">
+                        <img src="image/download (6).jpg" alt="tyler the creator">
+                        <p>Study Playlist</p>
+                    </a>
+                    <a href="playlist2.html" class="music-card">
+                        <img src="image/playlist2.jpg" alt="TV girl">
+                        <p>Stressed out playlist</p>
+                    </a>
+                    <a href="playlist3.html" class="music-card">
+                        <img src="image/download (5).jpg" alt="Clairo">
+                        <p>Happy Happy</p>
+                    </a>
                 </div>
             </section>
 
@@ -89,36 +89,36 @@
             </section>
 
             <section class="section" data-category="Music">
-                <h2>New from artists</h2>
+                <h2>Your Podcasts:</h2>
                 <div class="music-grid">
                     <div class="music-card">
-                        <img src="image/brighter days ahead.jpg" alt="Ariana Grande">
-                        <p>Brighter days ahead</p>
-                        <span>Ariana Grande</span>
+                        <img src="image/Emma Clarysse • DA Freelance _ « Tais-toi », c’est le podcast d’une fille qui s’est trop longtemps empêchée de parler_ J’ai eu le plaisir de créer toute la direction… _ Instagram.jpg" alt="podcast1">
+                        <p>Tais-tois</p>
+                        <span>Emma Clarysse</span>
                     </div>
                     <div class="music-card">
-                        <img src="image/this is how tmr moves.jpg" alt="Beabadoobee">
-                        <p>This is how tomorrow moves</p>
-                        <span>Beabadoobee</span>
+                        <img src="image/Rotten Mango.jpg" alt="podcast2">
+                        <p>True crime</p>
+                        <span>Rotten mango</span>
                     </div>
                 </div>
             </section>
 
              <section class="section" data-category="Music">
-                <h2>Past favorites</h2>
+                <h2>Your Downloads</h2>
                 <div class="music-grid">
                     <div class="music-card">
-                        <img src="image/enhypen.jpg" alt="enhypen">
-                        <p>No doubt - Enhypen</p>
+                        <img src="image/Cigarettes After Sex - Cigarettes After Sex.jpg" alt="enhypen">
+                        <p>Cry - Cigarettes After Sex</p>
                     </div>
                     <div class="music-card">
                         <img src="image/twice.jpg" alt="twice">
                         <p>UP NO MORE - Twice</p>
                     </div>
-                    <div class="music-card">
-                        <img src="image/newjeans.jpg" alt="nwj">
-                        <p>Hurt - NewJeans</p>
-                    </div>
+                    <a href="playlist4.html" class="music-card">
+                        <img src="image/ivan.jpg" alt="sleep">
+                        <p>Sleeping playlist</p>
+                    </a>
                 </div>
             </section>
         </div>        
@@ -168,24 +168,13 @@
         console.log('Audio player script started');
         
         const cardSongs = {
-            'Tyler, The creator': 'See You Again.mp3',
-            'TV Girl': 'Lovers Rock.mp3',
-            'Clairo': 'Flamin Hot Cheetos.mp3',
             'Calling U Back': 'calling you back.mp3',
             'Not Cute Anymore': 'Not cute anymore.mp3',
             'Emails I can\'t send': 'emails i cant send.mp3',
-            'Brighter days ahead': 'eternal sunshine.mp3',
-            'This is how tomorrow moves': 'Take A Bite.mp3',
-            'No doubt - Enhypen': 'No Doubt.mp3',
+            'Cry - Cigarettes After Sex': 'Cry.mp3',
             'UP NO MORE - Twice': 'UP NO MORE.mp3',
-            'Hurt - NewJeans': 'Hurt.mp3',
-            'wannabewithu - Lover is a day': 'Lover Is a Day.mp3',
-            'Ballads - Joji': 'Slow Dancing In The Dark.mp3',
-            'Submarine - The Marías': 'Sienna.mp3',
-            'Son of spergy - Daniel Caesar': 'Who Knows.mp3',
-            'Lover Girl - Laufey': 'Lover Girl.mp3',
-            'Ripples - Beabodoobee': 'Ripples.mp3',
-            'About you - The 1975': 'About You.mp3',
+            'Tais-tois': 'Podcast _ Les trucs pour lesquels jai arrt de mexcuser.mp3',
+            'True crime': 'Sister Finds Out 18-Yr-Old Brother Has First Time W_ Moms Corpse  Did Unthinkable W_ Her Brain.mp3'
         };
         
         let currentCard = null;
@@ -304,12 +293,15 @@
                         currentCard = this;
                         
                         musicPlayerIsland.style.display = 'block';
+                        document.body.classList.add('player-active');
                         playerSongTitle.textContent = cardText;
                         currentTime.textContent = '0:00';
                         totalTime.textContent = '0:00';
                         progressBarFill.style.width = '0%';
                         
-                        audioPlayer.src = '/music_sample/' + songFile;
+                        // Check if it's a podcast or music based on the file name
+                        const folder = songFile.includes('Podcast') || songFile.includes('Sister Finds') ? '/podcast_sample/' : '/music_sample/';
+                        audioPlayer.src = folder + songFile;
                         audioPlayer.play();
                     }
                 });

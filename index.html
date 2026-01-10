@@ -203,6 +203,7 @@
             'Lover Girl - Laufey': 'Lover Girl.mp3',
             'Ripples - Beabodoobee': 'Ripples.mp3',
             'About you - The 1975': 'About You.mp3',
+            'True crime podcast': 'Sister Finds Out 18-Yr-Old Brother Has First Time W_ Moms Corpse  Did Unthinkable W_ Her Brain.mp3',
         };
         
         let currentCard = null;
@@ -316,19 +317,30 @@
         
         function setupAudioPlayer() {
             console.log('Setting up audio player');
-            const cards = document.querySelectorAll('.music-card');
-            console.log('Found ' + cards.length + ' music cards');
+            const cards = document.querySelectorAll('.music-card, .single_poster-card');
+            console.log('Found ' + cards.length + ' cards');
             
             cards.forEach(card => {
                 card.style.cursor = 'pointer';
                 card.addEventListener('click', function() {
-                    const titleElement = this.querySelector('p');
+                    // Check if it's a single_poster-card (podcast) or music-card
+                    let titleElement;
+                    let cardText;
+                    let audioFolder = '/music_sample/';
+                    
+                    if (this.classList.contains('single_poster-card')) {
+                        titleElement = this.querySelector('h3');
+                        audioFolder = '/podcast_sample/';
+                    } else {
+                        titleElement = this.querySelector('p');
+                    }
+                    
                     if (!titleElement) return;
                     
-                    const cardText = titleElement.textContent.trim();
+                    cardText = titleElement.textContent.trim();
                     const songFile = cardSongs[cardText];
                     
-                    console.log('Clicked: ' + cardText + ', Song: ' + songFile);
+                    console.log('Clicked: ' + cardText + ', File: ' + songFile);
                     
                     if (songFile) {
                         if (currentCard) {
@@ -340,12 +352,13 @@
                         
                         // Show player island
                         musicPlayerIsland.style.display = 'block';
+                        document.body.classList.add('player-active');
                         playerSongTitle.textContent = cardText;
                         currentTime.textContent = '0:00';
                         totalTime.textContent = '0:00';
                         progressBarFill.style.width = '0%';
                         
-                        audioPlayer.src = '/music_sample/' + songFile;
+                        audioPlayer.src = audioFolder + songFile;
                         audioPlayer.play();
                     }
                 });

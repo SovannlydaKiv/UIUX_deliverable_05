@@ -152,6 +152,8 @@
         .artist-grid .music-card h3 {
             width: 100%;
             word-wrap: break-word;
+            color: white;
+            text-decoration: none;
         }
 
         .music-card p {

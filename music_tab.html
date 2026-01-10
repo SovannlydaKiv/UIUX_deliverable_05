@@ -107,14 +107,14 @@
             <section class="section">
                 <h2>Your favorite artists</h2>
                 <div class="music-grid artist-grid">
-                    <div class="music-card">
+                    <a href="https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA" target="_blank" class="music-card">
                         <img src="image/svt.jpg" alt="svt">
                         <h3>Seventeen</h3>
-                    </div>
-                    <div class="music-card">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCtiObj3CsEAdNU6ZPWDsddQ" target="_blank" class="music-card">
                         <img src="image/txt.jpg" alt="txt">
                         <h3>Tomorrow X Together</h3>
-                    </div>
+                    </a>
                 </div>
             </section>
 
@@ -344,6 +344,7 @@
                         
                         // Show player island
                         musicPlayerIsland.style.display = 'block';
+                        document.body.classList.add('player-active');
                         playerSongTitle.textContent = cardText;
                         currentTime.textContent = '0:00';
                         totalTime.textContent = '0:00';

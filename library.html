@@ -300,7 +300,7 @@
                         progressBarFill.style.width = '0%';
                         
                         // Check if it's a podcast or music based on the file name
-                        const folder = songFile.includes('Podcast') || songFile.includes('Sister Finds') ? '/podcast_sample/' : '/music_sample/';
+                        const folder = songFile.includes('Podcast') || songFile.includes('Sister Finds') ? 'podcast_sample/' : 'music_sample/';
                         audioPlayer.src = folder + songFile;
                         audioPlayer.play();
                     }
